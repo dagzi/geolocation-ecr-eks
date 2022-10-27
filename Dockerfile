@@ -1,4 +1,4 @@
 FROM openjdk:11.0.7
-COPY target/bioMedical-0.0.1-SNAPSHOT.jar bioMedical-0.0.1-SNAPSHOT.jar
+ADD bioMedical-0.0.1-SNAPSHOT.jar target/bioMedical-0.0.1-SNAPSHOT.jar
 EXPOSE 80
 ENTRYPOINT ["java","-jar","bioMedical-0.0.1-SNAPSHOT.jar"]
