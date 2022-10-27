@@ -26,7 +26,8 @@ pipeline {
         }
         // Building Docker images
         stage('Building image') {
-            steps{
+            agent any
+            steps {
                 script {
                     dockerImage = docker.build registry + ":$BUILD_NUMBER "
                 }
@@ -34,6 +35,7 @@ pipeline {
         }
         // Uploading Docker images into AWS ECR
         stage('Pushing to ECR') {
+            agent any
             steps{
                 script {
                     sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 270488249115.dkr.ecr.us-east-1.amazonaws.com'
